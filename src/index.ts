@@ -29,7 +29,7 @@ app.get('/search', (req: Request, res: Response) => {
   res.sendStatus(400)
 });
 
-app.get('/purchase/:id', (req: Request, res: Response) => {
+app.get('/purchase', (req: Request, res: Response) => {
   try {
     if(typeof req.query.id == "string") {
       const id = Number.parseInt(req.query.id)
@@ -46,7 +46,7 @@ app.get('/purchase/:id', (req: Request, res: Response) => {
 app.post('/book', (req: Request, res: Response) => {
     const newBook: NewBook = req.body
     const addedId = bookstore.addBook(newBook);
-    res.send(`"${newBook.name}" was added and got id ${addedId}`);
+    res.send(addedId);
   });
 
 app.listen(port, () => {
