@@ -14,14 +14,17 @@ const bookstore = {
         return 'Welcome to the book store!';
     },
     getInventory: (): BookInfo[] => {
+        // TODO: Summarize with title, price and number of available books
         return getBookInfo(inventory);
     },
     search: (query: string): BookInfo[] | string => {
+        // TODO: Summarize with just one title and price per book
         const matching = inventory.filter((book: Book) => book.name.toLowerCase().includes(query.toLowerCase()));
         if(!matching.length) return `"No books found matching "${query}`;
         return getBookInfo(matching);
     },
     purchaseBook: (id: number): Book | string => {
+        // TODO: Add some kind of financial transaction handling
         const available = inventory.find((book: Book) => book.id === id);
         if(!available) return "Out of stock";
         const purchased = { ...available };
