@@ -45,6 +45,7 @@ app.get('/purchase', (req: Request, res: Response) => {
 // TODO: Add admin authorization
 app.post('/book', (req: Request, res: Response) => {
     const newBook: NewBook = req.body
+    if(!newBook.name || !newBook.price) res.sendStatus(400)
     const addedId = bookstore.addBook(newBook);
     res.send(addedId);
   });
