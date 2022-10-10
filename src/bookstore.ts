@@ -21,7 +21,7 @@ const bookstore = {
     search: (query: string): Book[] | string => {
         // TODO: Summarize with just one title and price per book
         const matching = inventory.filter((book: Book) => book.name.toLowerCase().includes(query.toLowerCase()));
-        if(!matching.length) return `"No books found matching "${query}`;
+        if(!matching.length) return `No books found matching "${query}"`;
         return matching;
     },
     purchaseBook: (id: number): Book | string => {
