@@ -1,3 +1,4 @@
+// TODO: Add more fields like author, description etc
 export type NewBook = {
     name: string;
     price: number;
