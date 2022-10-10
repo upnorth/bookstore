@@ -31,7 +31,7 @@ const bookstore = {
         const purchased = { ...available };
         const index = inventory.indexOf(available);
         inventory.splice(index, 1)
-        return purchased;
+        return `You purchase of "${purchased.name} for ${purchased.price} is confirmed!`;
     },
     addBook: (newBook: NewBook): number => {
         const book: Book = {
