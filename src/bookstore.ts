@@ -1,27 +1,28 @@
-import { Book, BookInfo, NewBook } from "./types/book";
+import { Book, NewBook } from "./types/book";
 
-let id = 0;
-const inventory: Book[] = [];
-
-const getBookInfo = (books: Book[]) => {
-    return books.map(book => {
-        return { name: book.name, price: book.price} 
-    });
-}
+const initialInventory: Book[] = [
+{ id: 0, name: "Hitchhikers guide to the galaxy", price: 120.00 },
+{ id: 1, name: "Hitchhikers guide to the galaxy", price: 120.00 },
+{ id: 2, name: "Typescript for beginners", price: 100.00 },
+{ id: 3, name: "The lost symbol", price: 120.00 }
+]
+let nextId = 4;
+// TODO: Possibly restructure to symbolic rather than logistical data with just name, number of books, and with common price per title
+const inventory: Book[] = initialInventory;
 
 const bookstore = {
     greeting: (): string => {
         return 'Welcome to the book store!';
     },
-    getInventory: (): BookInfo[] => {
+    getInventory: (): Book[] => {
         // TODO: Summarize with title, price and number of available books
-        return getBookInfo(inventory);
+        return inventory;
     },
-    search: (query: string): BookInfo[] | string => {
+    search: (query: string): Book[] | string => {
         // TODO: Summarize with just one title and price per book
         const matching = inventory.filter((book: Book) => book.name.toLowerCase().includes(query.toLowerCase()));
         if(!matching.length) return `"No books found matching "${query}`;
-        return getBookInfo(matching);
+        return matching;
     },
     purchaseBook: (id: number): Book | string => {
         // TODO: Add some kind of financial transaction handling
@@ -34,11 +35,11 @@ const bookstore = {
     },
     addBook: (newBook: NewBook): number => {
         const book: Book = {
-            id: id,
+            id: nextId,
             name: newBook.name,
             price: newBook.price
         }
-        id++;
+        nextId++;
         inventory.push(book)
         return book.id
     },

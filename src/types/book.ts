@@ -9,5 +9,3 @@ export type Book = {
     name: string;
     price: number;
 }
-
-export type BookInfo = NewBook;
