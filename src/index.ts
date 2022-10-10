@@ -36,10 +36,10 @@ app.get('/purchase', (req: Request, res: Response) => {
       const purchasedOrMessage = bookstore.purchaseBook(id)
       res.send(purchasedOrMessage);
     }
+    res.sendStatus(400)
   } catch (err: unknown) {
     res.sendStatus(400)
   }
-  res.sendStatus(400)
 });
 
 // TODO: Add admin authorization
